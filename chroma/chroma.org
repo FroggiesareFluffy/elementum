@@ -1,0 +1,18 @@
+* Chroma
+** Context
+Draw
+Set MVP
+Bind Vertex Array
+** Frame Buffer
+** Vertex Buffer
+** Index Buffer (Element Buffer)
+** Vertex Array
+** Shader
+** Program (Shader Program)
+** Texture
+
+
+ctx.Bind(vertex_array)
+ctx.DrawTriangles(1, offset=0)
+ctx.SetFrameBuffer()
+ctx.DrawLines()
