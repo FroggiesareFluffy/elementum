@@ -1,7 +1,7 @@
 
 COMPILE = g++ -std=c++11
 
-LINK_ITEMS = -lAqua -lLumina -lChroma -lPrisma -lSDL2main -lSDL2 -lGL -lGLU -lGLEW -lSDL2_image
+LINK_ITEMS = -lAqua -lLumina -lChroma -lPrisma -lSDL2 -lGL -lGLU -lGLEW -lSDL2_image
 
 LINK_DIRECTORIES = -L ./lib/ -L ../chroma/lib/ -L ../lumina/lib/ -L ../aqua/lib/
 
@@ -19,7 +19,7 @@ lib/prisma.o: prisma.cc
 	g++ -c $^ -o $@ $(INCLUDE_DIRECTORIES)
 
 clean:
-	touch lib/trash
+	touch lib/trash || mkdir lib && touch lib/trash
 	touch prisma_test
 	rm lib/*
 	rm prisma_test

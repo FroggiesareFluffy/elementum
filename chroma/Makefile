@@ -1,7 +1,7 @@
 
 COMPILE = g++ -std=c++11
 
-LINK_ITEMS = -lLumina -lChroma -lShadow -lSDL2main -lSDL2 -lGL -lGLU -lGLEW -lSDL2_image
+LINK_ITEMS = -lLumina -lChroma -lShadow -lSDL2 -lGL -lGLU -lGLEW -lSDL2_image
 
 LINK_DIRECTORIES = -L ./lib/ -L ../lumina/lib/ -L ../shadow/lib/
 
@@ -49,7 +49,7 @@ lib/uniform.o: uniform.cc
 	$(COMPILE) -c $^ -o $@ $(INCLUDE_DIRECTORIES)
 
 clean:
-	touch lib/trash
+	touch lib/trash || mkdir lib && touch lib/trash
 	touch chroma_test
 	rm lib/*
 	rm chroma_test

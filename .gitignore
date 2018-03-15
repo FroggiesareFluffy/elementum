@@ -1,0 +1,5 @@
+# Binary files are not cross-platform and shouldn't be shared
+**/lib/*
+**/*_test
+
+
