@@ -16,7 +16,7 @@ prisma: lib/prisma.o
 	ar rcu lib/libPrisma.a $^
 
 lib/prisma.o: prisma.cc
-	g++ -c $^ -o $@ $(INCLUDE_DIRECTORIES)
+	$(COMPILE) -c $^ -o $@ $(INCLUDE_DIRECTORIES)
 
 clean:
 	touch lib/trash || mkdir lib && touch lib/trash

@@ -1,7 +1,8 @@
 #ifndef PRISMA_PRISMA
 #define PRISMA_PRISMA
 
-#include "chroma/uniform"
+#include "chroma/uniform.h"
+#include "prisma/model.h"
 #include <memory>
 
 namespace prisma {
