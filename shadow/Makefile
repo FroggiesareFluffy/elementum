@@ -31,7 +31,7 @@ lib/ray.o: ray.cc
 	$(COMPILE) -c $^ -o $@ $(INCLUDE_DIRECTORIES)
 
 clean:
-	touch lib/trash
+	touch lib/trash || mkdir lib && touch lib/trash
 	touch shadow_test
 	rm lib/*
 	rm shadow_test

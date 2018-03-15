@@ -32,7 +32,7 @@ lib/serializer.o: serializer.cc
 
 
 clean:
-	touch lib/x
+	touch lib/trash || mkdir lib && touch lib/trash
 	touch serializer_test
 	touch server_test
 	touch client_test

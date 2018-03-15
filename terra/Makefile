@@ -20,7 +20,7 @@ lib/terra.o: terra.cc
 
 
 clean:
-	touch lib/trash
+	touch lib/trash || mkdir lib && touch lib/trash
 	touch terra_test
 	rm lib/*
 	rm terra_test

@@ -1,7 +1,7 @@
 
 COMPILE = g++ -std=c++11
 
-LINK_ITEMS = -lLumina -lChroma -lSDL2main -lSDL2 -lGL -lGLU -lGLEW -lSDL2_image
+LINK_ITEMS = -lLumina -lChroma -lSDL2 -lGL -lGLU -lGLEW -lSDL2_image
 
 LINK_DIRECTORIES = -L ./lib/ -L ../chroma/lib/
 
@@ -28,7 +28,7 @@ lib/keyboard.o: keyboard.cc
 	$(COMPILE) -c $^ -o $@ $(INCLUDE_DIRECTORIES)
 
 clean:
-	touch lib/trash
+	touch lib/trash || mkdir lib && touch lib/trash
 	touch lumina_test
 	rm lib/*
 	rm lumina_test
