@@ -18,4 +18,12 @@ void Ray::Print(){
   source.Print();
 }
 
+void Ray::Serialize(std::ostream& os) const {
+  os << source << " " << direction;
+}
+
+void Ray::Unserialize(std::istream& is) {
+  is >> source >> direction;
+}
+
 }  // namespace shadow

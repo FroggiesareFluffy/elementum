@@ -4,7 +4,6 @@ COMPILE = g++ -std=c++11
 LINK_ITEMS = -lShadow
 
 LINK_DIRECTORIES = -L ./lib/
-
 INCLUDE_DIRECTORIES = -I ../
 
 

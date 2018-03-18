@@ -4,12 +4,14 @@
 #include <iostream>
 #include <fstream>
 
+#include "aqua/serializable.h"
+
 namespace shadow {
 
 struct Ray;
 struct Plane;
   
-struct Vector
+struct Vector : public aqua::Serializable
 {
  public:
   float data[4];
@@ -51,6 +53,8 @@ struct Vector
   bool operator == (float c) const;
   bool operator == (const Vector& v) const;
   bool operator != (const Vector& v) const;
+  void Serialize(std::ostream& os) const override;
+  void Unserialize(std::istream& is) override;
 };
 
 Vector operator + (const Vector& v1, const Vector& v2);

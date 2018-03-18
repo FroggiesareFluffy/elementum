@@ -55,4 +55,12 @@ Vector Plane::Intercept(const Vector& p1, const Vector& p2) const {
   return Intercept(r);
 }
 
+void Plane::Serialize(std::ostream& os) const {
+  os << normal << " " << point_on_plane;
+}
+
+void Plane::Unserialize(std::istream& is) {
+  is >> normal >> point_on_plane;
+}
+
 }  // namespace shadow

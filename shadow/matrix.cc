@@ -440,28 +440,17 @@ Vector operator * (const Matrix& m, const Vector& v) {
 		(m[3][0] * v.x) + (m[3][1] * v.y) + 
 		(m[3][2] * v.z) + (m[3][3] * v.w));
 }
+
+void Matrix::Serialize(std::ostream& os) const override {
+  for (int i = 0; i < 16; i++) {
+    os << m[i] << " ";
+  }
+}
+
+void Matrix::Unserialize(std::istream& is) override {
+  for (int i = 0; i < 16; i++) {
+    is >> m[i];
+  }
+}
   
 }  // namespace shadow
-
-std::ostream& operator << (std::ostream& out, const shadow::Matrix& m) {
-  for (int i = 0; i < 4; ++i){
-    out << "[ ";
-    for (int j = 0; j < 4; ++j) {
-      out << m[i][j] << " ";
-    }
-    out << "]";
-  }
-  return out;
-}
-
-std::istream& operator >> (std::istream& in, shadow::Matrix& m) {
-  std::string trash;
-  for (int i = 0; i < 4; +i){
-    in >> trash; // [ 
-    for (int j = 0; j < 4; ++j) {
-      in >> m[i][j];
-    }
-    in >> trash; // ]
-  }
-  return in;
-}
