@@ -294,4 +294,14 @@ bool operator < (const Vector& v1, const Vector& v2) {
   return false;
 }
 
+/************************ Serialization *************************/
+
+void Vector::Serialize(std::ostream& os) const {
+  os << r << " " << g << " " << b << " " << a;
+}
+
+void Vector::Unserialize(std::istream& is) {
+  is >> r >> g >> b >> a;
+}
+
 }  // namespace shadow
