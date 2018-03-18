@@ -79,10 +79,7 @@ void Matrix::Invert() {
 
 /*************************** Print Matrix ************************/
 void Matrix::Print() const {
-  for (int i = 0; i < 4; i++){
-    std::cout<<m[(i*4)+0]<<", "<<m[(i*4)+1]<<", "
-	     <<m[(i*4)+2]<<", "<<m[(i*4)+3]<<"\n";
-  }
+  std::cout << *this;
 }
 
 /************************ Clear to Identity **********************/
@@ -208,6 +205,12 @@ void Matrix::operator *= (float c) {
 /************************ Divide Constant ***********************/
 void Matrix::operator /= (float c) {
   for (int i = 0; i < 16; ++i) m[i] /= c;
+}
+
+bool Matrix::operator == (const Matrix& right) const {
+  for (int i = 0; i < 16; ++i)
+    if (m[i] != right.m[i]) return false;
+  return true;
 }
 
 /***************************** Rotate *****************************/
@@ -439,3 +442,26 @@ Vector operator * (const Matrix& m, const Vector& v) {
 }
   
 }  // namespace shadow
+
+std::ostream& operator << (std::ostream& out, const shadow::Matrix& m) {
+  for (int i = 0; i < 4; ++i){
+    out << "[ ";
+    for (int j = 0; j < 4; ++j) {
+      out << m[i][j] << " ";
+    }
+    out << "]";
+  }
+  return out;
+}
+
+std::istream& operator >> (std::istream& in, shadow::Matrix& m) {
+  std::string trash;
+  for (int i = 0; i < 4; +i){
+    in >> trash; // [ 
+    for (int j = 0; j < 4; ++j) {
+      in >> m[i][j];
+    }
+    in >> trash; // ]
+  }
+  return in;
+}

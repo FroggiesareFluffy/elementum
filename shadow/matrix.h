@@ -1,6 +1,8 @@
 #ifndef SHADOW_MATRIX
 #define SHADOW_MATRIX
 
+#include <iostream>
+
 namespace shadow {
 
 struct Ray;
@@ -31,6 +33,7 @@ class Matrix {
   void operator *= (const Vector&);
   void operator *= (float);
   void operator /= (float);
+  bool operator == (const Matrix& right) const;
   static Matrix XRotationMatrix(float angle);
   static Matrix YRotationMatrix(float angle);
   static Matrix ZRotationMatrix(float angle);
@@ -59,5 +62,8 @@ Matrix operator * (float c, const Matrix& m);
 Vector operator * (const Matrix& m, const Vector& v);
    
 }  // namespace shadow
+
+std::ostream& operator << (std::ostream& out, const shadow::Matrix& m);
+std::istream& operator >> (std::istream& in, shadow::Matrix& m);
 
 #endif
