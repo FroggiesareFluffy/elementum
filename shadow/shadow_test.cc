@@ -12,6 +12,7 @@ int main(int argc, char** argv) {
     z_positive.Print();
     std::cout << " != ";
     z_negative.Print();
+    std::cout << "Matrix: " << y_rotation_matrix << "\n";
   } else {
     std::cout << "Pass\n";
   }

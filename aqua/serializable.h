@@ -15,7 +15,7 @@ struct Serializable {
 
 }  // namespace aqua
 
-std::istream& operator >> (std::istream& is, aqua::Serializable& value) {
+inline std::istream& operator >> (std::istream& is, aqua::Serializable& value) {
   std::string trash;
   is >> trash;            // "{"
   value.Unserialize(is);
@@ -24,7 +24,7 @@ std::istream& operator >> (std::istream& is, aqua::Serializable& value) {
 }
 
 template <class T>
-std::istream& operator >> (std::istream& is, std::vector<T>& list) {
+inline std::istream& operator >> (std::istream& is, std::vector<T>& list) {
   std::string trash;
   is >> trash;      // "["
   int number = 0;
@@ -39,7 +39,7 @@ std::istream& operator >> (std::istream& is, std::vector<T>& list) {
 }
 
 template <class K, class T>
-std::istream& operator >> (std::istream& is, std::map<K, T>& map) {
+inline std::istream& operator >> (std::istream& is, std::map<K, T>& map) {
   std::string trash;
   is >> trash;      // "<"
   int number = 0;
@@ -55,7 +55,7 @@ std::istream& operator >> (std::istream& is, std::map<K, T>& map) {
   return is;
 }
 
-std::ostream& operator << (std::ostream& os,
+inline std::ostream& operator << (std::ostream& os,
 			   const aqua::Serializable& value) {
   os << " { ";
   value.Serialize(os);
@@ -64,7 +64,7 @@ std::ostream& operator << (std::ostream& os,
 }
 
 template <class T>
-std::ostream& operator << (std::ostream& os, const std::vector<T>& list) {
+inline std::ostream& operator << (std::ostream& os, const std::vector<T>& list) {
   os << " [ ";
   os << list.size() << " ";
   for (auto item : list) os << item << " ";
@@ -73,7 +73,7 @@ std::ostream& operator << (std::ostream& os, const std::vector<T>& list) {
 }
 
 template <class K, class T>
-std::ostream& operator << (std::ostream& os, const std::map<K, T>& map) {
+inline std::ostream& operator << (std::ostream& os, const std::map<K, T>& map) {
   os << " < ";
   os << map.size() << " ";
   for (auto pair : map) os << pair.first << " " << pair.second << " ";
@@ -81,4 +81,4 @@ std::ostream& operator << (std::ostream& os, const std::map<K, T>& map) {
   return os;
 }
 
-#endif
+#endif // AQUA_SERIALIZABLE

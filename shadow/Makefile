@@ -1,9 +1,9 @@
 
 COMPILE = g++ -std=c++11
 
-LINK_ITEMS = -lShadow
+LINK_ITEMS = -lShadow -lAqua
 
-LINK_DIRECTORIES = -L ./lib/
+LINK_DIRECTORIES = -L ./lib/ -L ../aqua/lib/
 
 INCLUDE_DIRECTORIES = -I ../
 

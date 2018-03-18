@@ -27,10 +27,6 @@ lib/server.o: server.cc
 lib/connection.o: connection.cc
 	$(COMPILE) -c $^ -o $@ $(INCLUDE_DIRECTORIES)
 
-lib/serializer.o: serializer.cc
-	$(COMPILE) -c $^ -o $@ $(INCLUDE_DIRECTORIES)
-
-
 clean:
 	touch lib/trash || mkdir lib && touch lib/trash
 	touch serializer_test

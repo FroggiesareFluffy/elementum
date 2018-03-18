@@ -1,13 +1,15 @@
 #ifndef SHADOW_MATRIX
 #define SHADOW_MATRIX
 
+#include "aqua/serializable.h"
+
 namespace shadow {
 
 struct Ray;
 struct Plane;
 struct Vector;
   
-class Matrix {
+class Matrix : public aqua::Serializable{
  public:
   Matrix();  // Identity Matrix
   Matrix(float, float, float, float,
@@ -43,6 +45,8 @@ class Matrix {
   static Matrix ProjectionMatrix(float fov, float aspect_ratio,
 				 float near, float far);
   void Rotate(const Ray&, float, float);
+  void Serialize(std::ostream& os) const;
+  void Unserialize(std::istream& is);
   float m[16];  // Row Major Order
  private:
   void Inversion(Matrix* temp, int order) const;
