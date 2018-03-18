@@ -441,13 +441,13 @@ Vector operator * (const Matrix& m, const Vector& v) {
 		(m[3][2] * v.z) + (m[3][3] * v.w));
 }
 
-void Matrix::Serialize(std::ostream& os) const override {
+void Matrix::Serialize(std::ostream& os) const {
   for (int i = 0; i < 16; i++) {
     os << m[i] << " ";
   }
 }
 
-void Matrix::Unserialize(std::istream& is) override {
+void Matrix::Unserialize(std::istream& is) {
   for (int i = 0; i < 16; i++) {
     is >> m[i];
   }
