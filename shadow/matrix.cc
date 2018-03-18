@@ -79,10 +79,7 @@ void Matrix::Invert() {
 
 /*************************** Print Matrix ************************/
 void Matrix::Print() const {
-  for (int i = 0; i < 4; i++){
-    std::cout<<m[(i*4)+0]<<", "<<m[(i*4)+1]<<", "
-	     <<m[(i*4)+2]<<", "<<m[(i*4)+3]<<"\n";
-  }
+  std::cout << *this;
 }
 
 /************************ Clear to Identity **********************/
@@ -208,6 +205,12 @@ void Matrix::operator *= (float c) {
 /************************ Divide Constant ***********************/
 void Matrix::operator /= (float c) {
   for (int i = 0; i < 16; ++i) m[i] /= c;
+}
+
+bool Matrix::operator == (const Matrix& right) const {
+  for (int i = 0; i < 16; ++i)
+    if (m[i] != right.m[i]) return false;
+  return true;
 }
 
 /***************************** Rotate *****************************/
@@ -438,17 +441,16 @@ Vector operator * (const Matrix& m, const Vector& v) {
 		(m[3][2] * v.z) + (m[3][3] * v.w));
 }
 
-void Matrix::Serialize(std::ostream& os) const {
+void Matrix::Serialize(std::ostream& os) const override {
   for (int i = 0; i < 16; i++) {
     os << m[i] << " ";
   }
 }
 
-void Matrix::Unserialize(std::istream& is) {
+void Matrix::Unserialize(std::istream& is) override {
   for (int i = 0; i < 16; i++) {
     is >> m[i];
   }
 }
   
 }  // namespace shadow
-

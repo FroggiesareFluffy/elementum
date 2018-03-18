@@ -33,6 +33,7 @@ class Matrix : public aqua::Serializable{
   void operator *= (const Vector&);
   void operator *= (float);
   void operator /= (float);
+  bool operator == (const Matrix& right) const;
   static Matrix XRotationMatrix(float angle);
   static Matrix YRotationMatrix(float angle);
   static Matrix ZRotationMatrix(float angle);
@@ -45,8 +46,8 @@ class Matrix : public aqua::Serializable{
   static Matrix ProjectionMatrix(float fov, float aspect_ratio,
 				 float near, float far);
   void Rotate(const Ray&, float, float);
-  void Serialize(std::ostream& os) const;
-  void Unserialize(std::istream& is);
+  void Serialize(std::ostream& os) const override;
+  void Unserialize(std::istream& is) override;
   float m[16];  // Row Major Order
  private:
   void Inversion(Matrix* temp, int order) const;

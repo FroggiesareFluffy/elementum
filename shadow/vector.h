@@ -68,6 +68,9 @@ bool operator <  (const Vector& v1, const Vector& v2);
 
 }  // namespace shadow
 
+std::ostream& operator << (std::ostream& out, const shadow::Vector& v);
+std::istream& operator >> (std::istream& in, shadow::Vector& v);
+
 #endif
 
 

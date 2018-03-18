@@ -155,8 +155,7 @@ Vector& Vector::operator /= (float c) {
 
 /****************************** Print ****************************/
 void Vector::Print() const {
-  std::cout <<  "{ " << x << ", " << y
-	    <<  ", " << z << ", " << w << " }\n";
+  std::cout << *this;
 }
 
 /************************** Round Helper *************************/
@@ -305,3 +304,17 @@ void Vector::Unserialize(std::istream& is) {
 }
 
 }  // namespace shadow
+
+std::ostream& operator << (std::ostream& out, const shadow::Vector& v) {
+  out << "[ " << v.x << " " << v.y << " "
+      << v.z << " " << v.w << " ]";
+  return out;
+}
+
+std::istream& operator >> (std::istream& in, shadow::Vector& v) {
+  std::string trash;
+  in >> trash; // [
+  in >> v.x >> v.y >> v.z >> v.w;
+  in >> trash; // ]
+  return in;
+}
